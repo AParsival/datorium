@@ -6,6 +6,16 @@ continue_game = True
 user_guesses = []
 start_time = datetime.datetime.now()
 
+def calc_ave_diff():
+    sum_of_differences = 0
+    for n in user_guesses:
+        sum_of_differences += abs(n - computer_number)
+
+    return sum_of_differences/len(user_guesses)
+
+def calc_time_starp():
+    return datetime.datetime.now()-start_time
+
 while(continue_game):
     user_guess = int(input('Uzmini skaitli starp 1 un 100: '))
     user_guesses.append(user_guess)
@@ -21,10 +31,5 @@ while(continue_game):
         print('Notika kļūda!')
 
 print('Game over!')
-
-sum_of_differences = 0
-for n in user_guesses:
-    sum_of_differences += abs(n - computer_number)
-
-print(f'Vidējā starpība ir {sum_of_differences/len(user_guesses)}')
-print(f'Tu spēlēji {datetime.datetime.now()-start_time} sekundes')
+print(f'Videja starpiba bija {calc_ave_diff()}')
+print(f'Tu speleji {calc_time_starp()} sekundes')
